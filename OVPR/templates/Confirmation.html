@@ -1,0 +1,143 @@
+<html xmlns="http://www.w3.org/1999/html">
+<head>
+    <title>Booking Confirmation</title>
+       <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/css/bootstrap.min.css">
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
+  <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/js/bootstrap.min.js"></script>
+    <style type="text/css">
+<style>
+   body {
+ background-color:dodgerblue;
+
+}
+      #h1{
+      color:#fff;
+      }
+        #ui{
+
+        background-color :#fff;
+        padding:70px;
+          align:left;
+         border-style: double;
+        margin-top:160px;
+
+
+
+
+        }
+        #ui label{
+        color:000;
+        }
+#nav{
+   width:120%;
+   width-left:30%;
+background-color:#808080;
+height:150px;
+margin-top:0px;
+
+}
+u1{
+list-style:none;
+padding:0;
+margin:0;
+position:absolute;
+
+}
+li{
+float:left;
+margin-top:40px
+
+}
+h1{
+ width:80%;
+ color:white;
+ display:block;
+ text-decoration:none;
+ font-size:2000px
+ padding:100px
+ text-align:center;
+ border-redius;10px
+ font-family:century Gothic
+ font-weight:bold;
+}
+</style>
+</head>
+<body>
+<div id="nav">
+
+    <u1>
+        <h1>Booking Confirmation Page</h1>
+    </u1>
+         <div class="container"  >
+      <div  class="row">
+       <div class="col-lg-24">
+              <div id="ui">
+               <form class="form-group" method="POST" action="/Payment">
+                   {% csrf_token %}
+                   <div class="col">
+
+                       <div class="col-lg-6" >
+                           <label>Name</label>
+                           <input type="text"  align="left" name="username"   value="{{Name}} " class="form-control" readonly>
+                       </div>
+                         <div class="col-lg-6">
+                           <label>Email</label>
+                           <input type="text"  name="username"  value="{{Email}}" class="form-control" readonly>
+                       </div>
+                   <div class="col-lg-6">
+                       <label>Place</label>
+                       <input type="text" value="{{Place}}" class="form-control" readonly>
+                   </div>
+                   <div class="col-lg-6">
+                       <label>Vechile Number</label>
+                       <input type="text" value="{{Vechile_No}}" class="form-control" readonly>
+                   </div>
+                   <div class="col-lg-6">
+                       <label>Total Time </label>
+                       <input type="text" value="{{hrs}} hrs" class="form-control" readonly>
+                   </div>
+                    <div class="col-lg-6">
+                        <label>Wheeler </label>
+                         <input type="email" name="email_id" value="4" class ="form-control" readonly>
+                    </div><div>
+                       <label>No of Slots</label>
+                       <input type="text"   class="form-control" value="{{No_Of_Slots}} " readonly></div>
+
+                    <br>
+                          <label>Total Charge</label>
+                             <input type="text"   class="form-control" value="{{Total_Charge}} Rs." readonly>
+                                </br>
+
+                             <label>CGST Charge</label>
+                             <input type="text"  class="form-control" value="9%" readonly>
+                                <label>SGST Charge</label>
+                                <input type="text"    class="form-control" value="9%" readonly>
+
+                                 <label>Grand Total Charge</label>
+                                  <input type="text"  height="70px"  class="form-control" value="{{grand_total}} Rs." readonly>
+
+           <div class="col-lg-6"></div>
+           </br>
+                   <div class="col-lg-6"></div>
+           </br>
+
+                  <input type="submit"  name="CBOOK" value="Confirm Payment" class ="btn btn-primary  btn-block">
+
+               </form>
+
+
+       </div>
+      </br>
+
+
+                               <div class="col-lg-6"></div>
+
+          <div class="col-lg-3"></div>
+       </div>
+      </div>
+   </div>
+
+
+</div>
+</body>
+</html>

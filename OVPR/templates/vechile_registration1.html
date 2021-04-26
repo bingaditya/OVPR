@@ -1,0 +1,139 @@
+{% extends 'base_login.html' %}
+<html lang="en">
+{% block content %}
+<head>
+    <meta charset="UTF-8">
+    <title>Vechile Registration</title>
+    <style>
+
+
+.nav{
+			background: #00e676;
+			width: 100%;
+			height: 40px;
+			margin: 0;
+			padding: 0;
+			text-align: right;
+		}
+
+
+h1 {
+  margin-left: auto;
+  margin-top: 50px;
+  text-align: center;
+  font-weight: 100;
+  font-size: 2.8em;
+  background: -webkit-linear-gradient(#DE2C05, #333);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+}
+
+div {
+  width: 500px;
+  margin: auto;
+}
+
+.formStyle {
+  background: transparent;
+  padding: 20px;
+  width: 400px;
+  margin-bottom: 20px;
+  border-bottom-width: 1px;
+  border-bottom-style: solid;
+  border-bottom-color: #ecf0f1;
+  border-top-style: none;
+  border-right-style: none;
+  border-left-style: none;
+  font-size: 1em;
+  font-weight: 100;
+  color: #7B0099;
+}
+
+.myButton {
+	box-shadow: 0px 10px 14px -7px #276873;
+	background:linear-gradient(to bottom, #feb236 5%, #55ACEE 100%);
+	background-color:#599bb3;
+	border-radius:8px;
+	display:inline-block;
+	cursor:pointer;
+	color:#ffffff;
+	font-family:Arial;
+	font-size:20px;
+	font-weight:bold;
+	padding:13px 32px;
+	text-decoration:none;
+	text-shadow:0px 1px 0px #3d768a;
+}
+.myButton:hover {
+	background:linear-gradient(to bottom, #408c99 5%, #599bb3 100%);
+	background-color:#408c99;
+}
+.myButton:active {
+	position:relative;
+	top:1px;
+}
+
+/*To remove the outline that appears on clicking the input textbox*/
+input:focus {
+  outline: none;
+}
+
+/* To format the placeholder text color */
+::-webkit-input-placeholder {
+   color: #7B0099;
+}
+
+:-moz-placeholder { /* Firefox 18- */
+   color: #ecf0f1;
+}
+
+::-moz-placeholder {  /* Firefox 19+ */
+   color: #ecf0f1;
+}
+
+:-ms-input-placeholder {
+   color: #ecf0f1;
+}
+
+    </style>
+</head>
+
+
+
+
+<body style="background-image:url(' /media/1.jpg');background-repeat:no-repeat;background-size: 100% 100%;">
+<div class="nav">Logged in as <button class="button" onclick="location.href='{% url 'prof' %}'">{{name}}</button><button class="button" onclick="location.href='{% url 'Login' %}'" >Logout</button></div>
+
+<h1>
+  Parking Booking Form
+</h1>
+
+<div>
+  <form action="/confirmation" method="post">
+      {% csrf_token %}
+    <input type="text" name="name" class="formStyle" placeholder="Name (required)" required />
+    <input type="email" name="email" class="formStyle" placeholder="Email (required)" required />
+    <input type="text" name="vechiletype" class="formStyle" placeholder="4 Wheeler" readonly />
+    <input type="text" name="vechileNo" class="formStyle" placeholder="Enter Vechile Number" required>
+    <input type="text" name="vechileNoCnf" class="formStyle" placeholder="Confirm Vechile Number" required>
+    <input type="datetime-local" name="BookingFrom" class="formStyle" placeholder="Booking From" required>
+    <input type="datetime-local" name="BookingTo" class="formStyle" placeholder="Booking To" required>
+    <input type="text" name="MobileNo" class="formStyle" placeholder="Mobile Number" required>
+      <select name="item">
+        {% for entry in items %}
+                <option value="{{entry}}">{{ entry }}</option>
+        {% endfor %}
+      </select>
+      <input type="number" name="Noofslot" class="formStyle" placeholder="1" readonly>
+    <br>
+   <button type="submit" class="myButton">Submit</button>
+  </form>
+</div>
+<script>
+{% if var %}
+    alert('{{ message }}');
+   {% endif %}
+</script>
+</body>
+{% endblock %}
+</html>

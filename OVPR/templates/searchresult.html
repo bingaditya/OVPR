@@ -1,0 +1,110 @@
+{% extends 'base_login.html' %}
+<!DOCTYPE html>
+<html lang="en">
+{% block content %}
+<head>
+    <meta charset="UTF-8">
+    <title>Search Result</title>
+    <style>
+        #customers {
+  font-family: "Trebuchet MS", Arial, Helvetica, sans-serif;
+  border-collapse: collapse;
+  width: 100%;
+}
+
+#customers td, #customers th {
+  border: 1px solid #ddd;
+  padding: 8px;
+}
+
+#customers tr{background-color: #f2f2f2;}
+
+#customers tr:hover {background-color: #ddd;}
+
+#customers th {
+  padding-top: 12px;
+  padding-bottom: 12px;
+  text-align: left;
+  background-color: #4CAF50;
+  color: white;
+}
+.h{
+    color:DodgerBlue;
+    text-align: center;}
+.sub {
+  background-color: #4CAF50; /* Green */
+  border: none;
+  color: white;
+  padding: 15px 32px;
+  text-align: center;
+  text-decoration: none;
+  display: inline-block;
+  font-size: 16px;
+  margin: absolute;
+  margin-left: 700px;
+  justify-content: center;
+  align-items: center;
+  cursor: pointer;
+  -webkit-transition-duration: 0.4s; /* Safari */
+  transition-duration: 0.4s;
+}
+.sub:hover {
+  box-shadow: 0 12px 16px 0 rgba(0,0,0,0.24),0 17px 50px 0 rgba(0,0,0,0.19);
+}
+    </style>
+</head>
+<body>
+<div class="topnav" style="background-color: #333; overflow: hidden;">
+	 <a href="." style="float: left;display: block;color: #f2f2f2;text-align: center;padding: 14px 16px;text-decoration: none;">Home</a>
+    <a href ="{% url 'Login' %} "style="float: left;display: block;color: #f2f2f2;text-align: center;padding: 14px 16px;text-decoration: none;" >Vechile Registration</a>
+  <a href="{% url  'send' %}" style="float:right;display: block;color: #f2f2f2;text-align: center;padding: 14px 16px;text-decoration: none;">Contact us</a>
+  <a href="{% url 'Login' %}" style="float: right;display: block;color: #f2f2f2;text-align: center;padding: 14px 16px;text-decoration: none;">Login</a>
+</div>
+{% if query %}
+        <h2 class="h">Results for "{{query|escape}}":</h2>
+
+        {% if results %}
+
+                <form action="/selected" method="GET">
+                {% for name in results %}
+                <INPUT TYPE="submit" Name="result" Value="{{name.Name}}" class="sub"><br/><br/>
+                {% endfor %}
+            </form>
+        {% else %}
+            <h1 style="color:#4c51bf; text-align:center;font-size:70px;">Parking Place Not Found With This Name..</h1>
+        {% endif %}
+    {% endif %}
+{% if var %}
+<div class="w3-container">
+    <h2 style="text-align: center;" id="logo">Search Result</h2>
+<table  id="customers">
+    <tr>
+    <th>Details</th>
+        <th>Values</th>
+    </tr>
+    <tr>
+        <td>Parking Name : </td>
+        <td>{{name}} </td>
+    </tr>
+    <tr>
+        <td>Area: </td>
+        <td> {{Area}}</td>
+    </tr>
+    <tr>
+        <td> Total slots: </td>
+        <td> {{Total_block}}</td>
+    </tr>
+    <tr>
+        <td> Availbale Blocks:</td>
+        <td> {{available}}</td>
+    </tr>
+    <tr>
+        <td>Price per Hour: </td>
+        <td>{{priceperhr}} Rs. </td>
+    </tr>
+</table>
+</div>
+{% endif %}
+</body>
+{% endblock %}
+</html>

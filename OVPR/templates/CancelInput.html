@@ -1,0 +1,262 @@
+{% extends 'base_login.html' %}
+<!DOCTYPE html>
+<html lang="en">
+{% block content %}
+<head>
+    <meta charset="UTF-8">
+    <title>{{name}}</title>
+    <style>
+    @import url(https://fonts.googleapis.com/css?family=Open+Sans);
+        .nav{
+			background: #1C63B7;
+			width: 100%;
+			height: 40px;
+			margin: 0;
+			padding: 0;
+			text-align: right;
+		}
+		#customers {
+  font-family: "Trebuchet MS", Arial, Helvetica, sans-serif;
+  border-collapse: collapse;
+  width: 100%;
+}
+
+#customers td, #customers th {
+  border: 1px solid #ddd;
+  padding: 8px;
+}
+
+#customers tr{background-color: #f2f2f2;}
+
+#customers tr:hover {background-color: #ddd;}
+
+#customers th {
+  padding-top: 12px;
+  padding-bottom: 12px;
+  text-align: left;
+  background-color: #4CAF50;
+  color: white;
+}
+@import url(https://fonts.googleapis.com/css?family=Open+Sans:400,800,700,300);
+@import url(https://fonts.googleapis.com/css?family=Squada+One);
+#logo {
+  font-family: 'Open Sans', sans-serif;
+  color: #555;
+  text-decoration: none;
+  text-transform: uppercase;
+  font-size: 150px;
+  font-weight: 800;
+  letter-spacing: -3px;
+  line-height: 1;
+  text-shadow: #EDEDED 3px 2px 0;
+  position: relative;
+}
+#logo:after {
+  content:"Search Result";
+  position: absolute;
+  left: 8px;
+  top: 32px;
+}
+#logo:after {
+  /*background: url(https://subtlepatterns.com/patterns/crossed_stripes.png) repeat;*/
+  background-image: -webkit-linear-gradient(left top, transparent 0%, transparent 25%, #555 25%, #555 50%, transparent 50%, transparent 75%, #555 75%);
+  background-size: 4px 4px;
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  z-index: -5;
+  display: block;
+  text-shadow: none;
+}
+input[type=text] {
+  width: 200px;
+  box-sizing: border-box;
+  border: 2px solid #ccc;
+  border-radius: 4px;
+  font-size: 16px;
+  background-color: white;
+  background-position: 10px 10px;
+  background-repeat: no-repeat;
+  padding: 12px 2px 12px 4px;
+  transition: width 0.4s ease-in-out;
+}
+
+input[type=text]:focus {
+  width: 100%;
+}
+.searchButton {
+  width: 100px;
+  height: 45px;
+  border: 1px solid #00B4CC;
+  background: #00B4CC;
+  text-align: center;
+  color: #fff;
+  border-radius: 5px 5px 5px 5px;
+  cursor: pointer;
+  font-size: 20px;
+}
+
+/*Resize the wrap to see the search bar change!*/
+.wrap{
+  width: 30%;
+  position: absolute;
+  top: 40%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+}
+.search {
+  width: 100%;
+  position: relative;
+  display: flex;
+}
+
+.searchTerm {
+  width: 100%;
+  border: 3px solid #00B4CC;
+  border-right: none;
+  padding: 5px;
+  height: 20px;
+  border-radius: 5px 0 0 5px;
+  outline: none;
+  color: #9DBFAF;
+}
+
+.searchTerm:focus{
+  color: #00B4CC;
+}
+.d {
+  display: block;
+  width: 400px;
+    margin: 0 auto 0 auto;
+  left: 0;
+  right: 0;
+  top: 30vh;
+}
+
+.hello {
+  display: block;
+  cursor: pointer;
+  outline: none;
+  border: none;
+  margin-top: 10px;
+  background-color: #E75B2F;
+  width: 400px;
+  height: 70px;
+  border-radius: 30px;
+  font-size: 1.5rem;
+  font-weight: 600;
+  color: #434190;
+  background-size: 100% 100%;
+  box-shadow: 0 0 0 7px #E75B2F inset;
+  margin-bottom: 15px;
+
+}
+
+.hello:hover {
+  background-image: linear-gradient(
+    145deg,
+    transparent 10%,
+    #EF9A9A 10% 20%,
+    transparent 20% 30%,
+    #EF9A9A 30% 40%,
+    transparent 40% 50%,
+    #EF9A9A 50% 60%,
+    transparent 60% 70%,
+    #EF9A9A 70% 80%,
+    transparent 80% 90%,
+    #EF9A9A 90% 100%
+  );
+  animation: background 3s linear infinite;
+}
+
+@keyframes background {
+  0% {
+    background-position: 0 0;
+  }
+  100% {
+    background-position: 400px 0;
+  }
+}
+    </style>
+   </head>
+<body>
+<div class="nav">Logged in as <button class="button" onclick="location.href='{% url 'prof' %}'">{{name}}</button>
+    <button class="button" onclick="location.href='{% url 'Login' %}'">Logout</button></div>
+<form class="text-input" method="POST" action="/result">
+    {% csrf_token %}
+    <div class="wrap">
+   <div class="search">
+<input type="text" name="name" id="input"  placeholder="Enter your unique id.." required>
+
+       <button type="submit" value="Search" class="searchButton"><i class="fa fa-search">search</i></button></div></div>
+</form>
+{% if var2 %}
+<div class="w3-container">
+    <h2 style="text-align: center;" id="logo">Search Result</h2>
+<table  id="customers">
+    <tr>
+    <th>Details</th>
+        <th>Values</th>
+    </tr>
+    <tr>
+        <td>UserName : </td>
+        <td>{{usr}} </td>
+    </tr>
+    <tr>
+        <td>Booking Id: </td>
+        <td> {{Bid}}</td>
+    </tr>
+    <tr>
+        <td> Name: </td>
+        <td> {{name}}</td>
+    </tr>
+    <tr>
+        <td> Vechile No:</td>
+        <td> {{VNo}}</td>
+    </tr>
+    <tr>
+        <td>Vechile Type: </td>
+        <td>4 Wheeler </td>
+    </tr>
+    <tr>
+        <td>Parking Place: </td>
+        <td>{{pplace}} </td>
+    </tr>
+    <tr>
+        <td> Locality of Parking Place:</td>
+        <td> {{area}}</td>
+    </tr>
+    <tr>
+        <td>Booked on:</td>
+        <td>{{t1}} </td>
+    </tr>
+    <tr>
+        <td> Start Time:</td>
+        <td> {{t2}}</td>
+    </tr>
+    <tr>
+        <td> End Time:</td>
+        <td> {{t3}}</td>
+    </tr>
+    <tr>
+        <td>Total Hrs of Booking: </td>
+        <td>{{hrs}} </td>
+    </tr>
+    <tr>
+        <td>Total Price: </td>
+        <td>{{tot}} </td>
+    </tr>
+</table>
+    </div>
+
+    <div class="d"><button type="submit" name="cancel booking" onclick="location.href='{% url 'cancel' %}'" class="hello">Cancel booking</button></div>
+{% endif %}
+<script>
+    {% if var1 %}
+        alert("Id Not Found Please Try Again...");
+    {% endif %}
+</script>
+
+</body>
+{% endblock %}
+
+</html>

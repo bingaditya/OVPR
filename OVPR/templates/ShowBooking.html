@@ -1,0 +1,142 @@
+{% extends 'base_login.html' %}
+<!DOCTYPE html>
+<html lang="en">
+{% block content %}
+<head>
+    <meta charset="UTF-8">
+    <title>{{name}}</title>
+    <style>
+     .nav{
+			background: #1C63B7;
+			width: 100%;
+			height: 40px;
+			margin: 0;
+			padding: 0;
+			text-align: right;
+		}
+    body {
+  background-image: url('/media/LM.jpg');
+  background-repeat: no-repeat;
+  background-attachment: fixed;
+  background-size: 100% 100%;
+
+
+}
+        #customers td, #customers th {
+  border: 1px solid #ddd;
+  padding: 8px;
+  justify-content: center;
+  align-items: center;
+  margin-left:200px;
+}
+
+#customers tr{background-color: #f2f2f2;}
+
+#customers tr:hover {background-color: #ddd;}
+
+#customers th {
+  padding-top: 12px;
+  padding-bottom: 12px;
+  text-align: left;
+  background-color: #4CAF50;
+  color: white;
+}
+@import url(https://fonts.googleapis.com/css?family=Open+Sans:400,800,700,300);
+@import url(https://fonts.googleapis.com/css?family=Squada+One);
+#logo {
+  font-family: 'Open Sans', sans-serif;
+  color: #555;
+  text-decoration: none;
+  text-transform: uppercase;
+  font-size: 150px;
+  font-weight: 800;
+  letter-spacing: -3px;
+  line-height: 1;
+  text-shadow: #EDEDED 3px 2px 0;
+  position: relative;
+}
+#logo:after {
+  content:"Search Result";
+  position: absolute;
+  left: 8px;
+  top: 32px;
+}
+#logo:after {
+  /*background: url(https://subtlepatterns.com/patterns/crossed_stripes.png) repeat;*/
+  background-image: -webkit-linear-gradient(left top, transparent 0%, transparent 25%, #555 25%, #555 50%, transparent 50%, transparent 75%, #555 75%);
+  background-size: 4px 4px;
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  z-index: -5;
+  display: block;
+  text-shadow: none;
+}
+    </style>
+</head>
+<body>
+<div class="nav">Logged in as <button class="button" onclick="location.href='{% url 'prof' %}'">{{name}}</button><button class="button" onclick="location.href='{% url 'Login' %}'">Logout</button></div>
+    <br>
+<h2 style="text-align: center;" id="logo">Search Result</h2>
+{% for v in var %}
+<div class="w3-container">
+
+<table  id="customers">
+    <tr>
+    <th>Details</th>
+        <th>Values</th>
+    </tr>
+    <tr>
+        <td>UserName : </td>
+        <td>{{v.email}} </td>
+    </tr>
+    <tr>
+        <td>Booking Id: </td>
+        <td> {{v.Bid}}</td>
+    </tr>
+    <tr>
+        <td> Name: </td>
+        <td> {{v.Name}}</td>
+    </tr>
+    <tr>
+        <td> Vechile No:</td>
+        <td> {{v.VhNo}}</td>
+    </tr>
+    <tr>
+        <td>Vechile Type: </td>
+        <td>4 Wheeler </td>
+    </tr>
+    <tr>
+        <td>Parking Place: </td>
+        <td>{{v.parkplace}} </td>
+    </tr>
+    <tr>
+        <td> Locality of Parking Place:</td>
+        <td> {{v.area}}</td>
+    </tr>
+    <tr>
+        <td>Booked on:</td>
+        <td>{{v.created_time}} </td>
+    </tr>
+    <tr>
+        <td> Start Time:</td>
+        <td> {{v.start_time}}</td>
+    </tr>
+    <tr>
+        <td> End Time:</td>
+        <td> {{v.end_time}}</td>
+    </tr>
+    <tr>
+        <td>Total Hrs of Booking: </td>
+        <td>{{v.No_of_hrs}} </td>
+    </tr>
+    <tr>
+        <td>Total Price: </td>
+        <td>{{v.Total_price}} Rs. </td>
+    </tr>
+</table>
+    </div><br/>
+{% endfor %}
+
+</body>
+{% endblock %}
+</html>

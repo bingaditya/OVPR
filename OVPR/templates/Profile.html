@@ -1,0 +1,63 @@
+{% extends 'base_login.html' %}
+<!DOCTYPE html>
+<html lang="en">
+{% block content %}
+<head>
+    <meta charset="UTF-8">
+    <title>{{name}}</title>
+    <style>
+        .nav{
+			background: #1C63B7;
+			width: 100%;
+			height: 40px;
+			margin: 0;
+			padding: 0;
+			text-align: right;
+		}
+		.sub {
+  background-color: #3D7FD7; /* Green */
+  border: none;
+  color: white;
+  padding: 15px 32px;
+  text-align: center;
+  text-decoration: none;
+  display: inline-block;
+  font-size: 16px;
+  margin: absolute;
+  margin-left: 700px;
+  justify-content: center;
+  align-items: center;
+  cursor: pointer;
+  -webkit-transition-duration: 0.4s; /* Safari */
+  transition-duration: 0.4s;
+}
+.sub:hover {
+  box-shadow: 0 12px 16px 0 rgba(0,0,0,0.24),0 17px 50px 0 rgba(0,0,0,0.19);
+}
+h2{
+    color:#22191A;
+    text-align: center;}
+    </style>
+</head>
+<body>
+<div class="nav">Logged in as {{name}}<button class="button" onclick="location.href='{% url 'Login' %}'">Logout</button></div>
+    <br>
+    <h2>Show Bookings</h2>
+    <br>
+    <button type="submit" name="ShowBooking" onclick="location.href='{% url 'ShowBooking' %}'" class="sub">Show Booking</button>
+    <br>
+    <h2>Cancel Bookings</h2>
+    <br>
+    <button type="submit" name="cancel bookin" onclick="location.href='{% url 'Cancel' %}'" class="sub">Cancel Booking</button>
+<br>
+    <h2>Start Bookings</h2>
+    <br>
+    <button type="submit" name="startbooking" onclick="location.href='{% url 'startbooking' %}'" class="sub">Start Booking</button>
+</body>
+<script>
+    {% if var1 %}
+        alert('No data');
+    {% endif %}
+</script>
+{% endblock %}
+</html>

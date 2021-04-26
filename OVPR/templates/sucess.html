@@ -1,0 +1,24 @@
+{% extends 'base_login.html' %}
+<!DOCTYPE html>
+<html lang="en">
+{% block content %}
+<head>
+    <meta charset="UTF-8">
+    <title>Sucess</title>
+    <style>
+        .nav{
+			background: #1C63B7;
+			width: 100%;
+			height: 40px;
+			margin: 0;
+			padding: 0;
+			text-align: right;
+		}
+    </style>
+</head>
+<body>
+<div class="nav">Logged in as <button class="button" onclick="location.href='{% url 'prof' %}'">{{name}}</button><button class="button" onclick="location.href='{% url 'Login' %}'">Logout</button></div>
+<h1 style="color:#58C040;font-size:72px;text-align:center;">{{var}}</h1>
+</body>
+{% endblock %}
+</html>
